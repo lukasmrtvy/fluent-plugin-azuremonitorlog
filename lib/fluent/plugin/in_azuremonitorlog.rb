@@ -24,7 +24,7 @@ class Fluent::AzureMonitorLogInput < Fluent::Input
   config_param :select,             :string, :default => nil
   config_param :filter,             :string, :default => "eventChannels eq 'Admin, Operation'"
   config_param :interval,           :integer,:default => 300
-  config_param :api_version,        :string, :default => '2015-04-01'
+  config_param :api_version,        :string, :default => '2018-01-01'
   def initialize
     super
   end
