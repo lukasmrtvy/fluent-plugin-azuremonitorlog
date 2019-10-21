@@ -7,5 +7,5 @@ COPY / /src/
 WORKDIR /src/
 
 RUN bundle install
-
-#RUN gem build fluent-plugin-azuremonitorlog.gemspec
+RUN rake test
+RUN gem build fluent-plugin-azuremonitorlog.gemspec
