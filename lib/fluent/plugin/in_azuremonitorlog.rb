@@ -5,18 +5,8 @@ require 'uri'
 
 module Fluent
   module Plugin
-    class Fluent::AzureMonitorLogInput < Fluent::Input
+    class AzureMonitorLogInput < Fluent::Input
       Fluent::Plugin.register_input("azuremonitorlog", self)
-
-      # To support log_level option implemented by Fluentd v0.10.43
-      unless method_defined?(:log)
-        define_method("log") { $log }
-      end
-
-      # Define `router` method of v0.12 to support v0.10 or earlier
-      unless method_defined?(:router)
-        define_method("router") { Fluent::Engine }
-      end
 
       config_param :tag,                :string
       config_param :tenant_id,          :string, :default => nil
@@ -28,6 +18,7 @@ module Fluent
       config_param :filter,             :string, :default => "eventChannels eq 'Admin, Operation'"
       config_param :interval,           :integer,:default => 300
       config_param :api_version,        :string, :default => '2018-01-01'
+      
       def initialize
         super
       end
